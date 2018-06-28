@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .div1{
+            width: 100px;
+            height: 400px;
+            background-color:blue;
+        }
+        .div2{
+            width: 100px;
+            height: 1500px;
+            background-color:pink;
+        }
+        .div3{
+            width: 100px;
+            height: 600px;
+            background-color:black;
+        }
+        .btn{
+            position:fixed;
+            bottom:6px;
+            right: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3</div>
+<button class="btn" onclick="gotop()">回到顶部</button>
+<script>
+    var thisTop;
+    function gotop(){
+        var timer=setInterval(function(){
+            window.scrollTo(0,thisTop-=30);
+            console.log("1");
+            if(thisTop<20){
+                clearInterval(timer);
+            }
+        },100);
+    }
+    window.onscroll=function(){
+        thisTop=document.documentElement.scrollTop||document.body.scrollTop;
+    }
+</script>
+</body>
+</html>
