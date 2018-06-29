@@ -2,37 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>古诗一首</title>
     <style type="text/css">
-        li{list-style: none;}
+        #container {
+            width: 500px;
+            height: 1000px;
+            margin-left: 400px;
+            text-align: center;
+            background-image: url("../image/2.jpg");
+            background-position: 300px -30px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        span{
+            font:bold 15px 宋体;
+        }
+        .description{
+            font:14px/1.5 宋体;  letter-spacing: 3px;
+            text-align: justify;
+            text-indent:50px;
+        }
     </style>
 </head>
 <body>
-<form>
-    <p><label for="username">账号:</label><input type="text" id="username" name="username"></p>
-    <p><label for="passsword">密码:</label><input type="text" id="passsword" name="password"></p>
-    <p>
-        性别：
-        <input type="radio" name="sex">男
-        <input type="radio" name="sex">女
+<div id="container">
+    <h1>早发白帝城</h1>
+    <p class="poem">
+        朝辞白帝彩云间，千里江陵一日还。<br/>
+        两岸猿声啼不住，轻舟已过万重山。
     </p>
-    <p>喜欢的水果：
-        <input type="checkbox">苹果
-        <input type="checkbox">橘子
-        <input type="checkbox">香蕉
-        <input type="checkbox">芒果
+    <p class="description"><span>简介：</span>诗是写景的，唐肃宗乾元二年（759），诗人
+        流放夜郎，行至白帝遇赦，行舟东还江陵时而作此诗，诗意在描摹自白帝至江陵一段长江，
+        水流急速，行舟若飞的情况，首句写白帝城之高；二句写江陵路遥，行舟迅速；三句以山影
+        猿声烘托行舟飞进；四句写行舟轻如无物，点明水势如泻，全诗风棱挺拔，一泻直下，快船
+        快意，令人神远，难怪乎名人杨慎赞曰：“惊风雨而泣鬼神”！
     </p>
-    <p>
-        学校：
-        <select>
-            <option value="1">林大</option>
-            <option value="2">黑大</option>
-            <option value="3">哈理工</option>
-        </select>
-    </p>
-    <input type="reset" value="重置">
-    <input type="button" name="button" value="确定">
-
-</form>
+</div>
 </body>
 </html>
