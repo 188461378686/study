@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            width: 100px;
+            border: 1px solid black;
+            display: none;
+            position: absolute;
+        }
+        li{
+            width: 100px;
+            height:35px;
+            line-height: 35px;
+            border-bottom:1px solid black;
+            list-style: none;
+            text-align: center;
+            font-size: 18px;
+
+        }
+        li:hover{
+            background-color: gray;
+        }
+        .active:after{
+            content:"!";
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul id="ul1">
+        <li>设置代办</li>
+        <li>设置未读</li>
+        <li>设置已读</li>
+        <li>删除右键</li>
+    </ul>
+    <script>
+        var oUl=document.getElementById("ul1");
+        var oLi=document.querySelectorAll("#ul1 li");
+        document.oncontextmenu=function(e){
+            oUl.style.display="block";
+            oUl.style.top=e.clientY+"px";
+            oUl.style.left=e.clientX+"px";
+            e.preventDefault();
+        }
+        for(var i=0;i<oLi.length;i++) {
+            oLi[i].index=i;
+               oLi[i].onclick=function(){
+                  console.log(this.index+" "+this.innerHTML);
+                  for(var j=0;j<oLi.length;j++){
+                      oLi[j].className="";
+                  }
+                   this.className="active";
+               }
+        }
+    </script>
+</div>
+</body>
+</html>

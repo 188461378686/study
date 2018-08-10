@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .wrapper{
+            width: 600px;
+            margin:0 auto;
+            border:1px solid  #ddd;
+            margin-top:30px;
+        }
+        .top{
+            border-bottom:1px solid #ddd;
+            position:relative;
+        }
+        .top img{
+            width: 220px;
+            height: 220px;
+            margin:0 auto;
+            display:block;
+        }
+
+        .lbtn,.rbtn{
+            position:absolute;
+            font-size:23px;
+            width: 20px;
+            height: 20px;
+        }
+        .lbtn{
+            top:100px;
+            left:5px;
+        }
+        .rbtn{
+            top:100px;
+            right:5px;
+        }
+
+        .bottom:after{
+            content:"";
+            clear:both;
+            display:block;
+        }
+        .bottom li{
+            list-style: none;
+            float:left;
+            width: 149px;
+            border-right:1px solid #ddd;
+        }
+        .bottom li:last-child{
+            border-right: 0;
+        }
+        .bottom li img{
+            width: 120px;
+            height: 120px;
+            display:block;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="top">
+        <img src="./img/1.jpg" alt="">
+        <span class="lbtn">&lt;</span>
+        <span class="rbtn">&gt;</span>
+    </div>
+   <ul class="bottom">
+       <li><img src="./img/1.jpg" alt=""></li>
+       <li><img src="./img/2.jpg" alt=""></li>
+       <li><img src="./img/3.jpg" alt=""></li>
+       <li><img src="./img/4.jpg" alt=""></li>
+   </ul>
+</div>
+<script>
+    aListImg=document.querySelectorAll(".bottom li img");
+    oImg=document.querySelector(".top img");
+    aBtn=document.querySelectorAll(".top span");
+    var nowIndex=0;
+    function changeImg(index){
+        if(index>3){
+            nowIndex=0;
+        }
+        else if(index<0){
+            nowIndex=3;
+        }
+        var thisImg=aListImg[nowIndex].getAttribute("src");
+        oImg.setAttribute("src",thisImg);
+    }
+    for(var i=0;i<aListImg.length;i++){
+        aListImg[i].index=i;
+        aListImg[i].onmouseover=function () {
+            nowIndex=this.index;
+          changeImg(nowIndex);
+        }
+    }
+        for(var j=0;j<aBtn.length;j++){
+            aBtn[j].onclick=function(){
+                var nowBtn=this.getAttribute("class");
+                if(nowBtn=='lbtn'){
+                    nowIndex--;
+                    changeImg(nowIndex);
+
+                }
+                else if(nowBtn=='rbtn'){
+                    nowIndex++;
+                    changeImg(nowIndex);
+
+                }
+            }
+
+        }
+
+
+</script>
+</body>
+</html>

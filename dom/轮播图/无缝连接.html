@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        .wrapper{
+            width: 490px;
+            height: 170px;
+            border:5px solid #fff;
+            margin:0 auto;
+            position:relative;
+            overflow: hidden;
+        }
+        .wrapper ul:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .wrapper:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .wrapper ul{
+            width: 2940px;
+
+        }
+        .wrapper ul li{
+            float:left;
+        }
+        .wrapper span{
+            width: 20px;
+            height: 20px;
+            background-color: #f90;
+            border-radius: 50%;
+            font-size: 12px;
+            z-index:1;
+            color:white;
+            text-align: center;
+            display:inline-block;
+            line-height: 20px;
+
+        }
+        .wrapper .wc-lbtn{
+            float:left;
+            position:absolute;
+            left:10px;
+            bottom:10px;
+        }
+        .wrapper .wc-rbtn{
+            float:right;
+            position:absolute;
+            right:10px;
+            bottom:10px;
+        }
+        .wc-img{
+            position: absolute;
+        }
+        .wc-rbtn .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrapper">
+           <ul class="wc-img">
+               <li><img src="img/1.jpg" alt=""></li>
+               <li><img src="img/2.jpg" alt=""></li>
+               <li><img src="img/3.jpg" alt=""></li>
+               <li><img src="img/4.jpg" alt=""></li>
+               <li><img src="img/5.jpg" alt=""></li>
+               <li><img src="img/1.jpg" alt=""></li>
+           </ul>
+           <div class="wc-lbtn">
+               <span>&lt;</span>
+               <span>&gt;</span>
+           </div>
+           <div class="wc-rbtn">
+               <span class="active">1</span>
+               <span>2</span>
+               <span>3</span>
+               <span>4</span>
+               <span>5</span>
+           </div>
+       </div>
+   <script src="../jquery-3.3.1.min.js"></script>
+   <script>
+       var aRspan=document.querySelectorAll('.wc-rbtn span');
+       var oImg=document.querySelector(".wc-img");
+       var aLspan=document.querySelectorAll('.wc-lbtn span');
+       var oWrap=document.querySelector(".wrapper")
+       var nowIndex=0;
+       var isRun=true,isTimer=true;
+       var timer;
+       //五个按钮点击
+       clearInterval(timer);
+        for(var i=0;i<aRspan.length;i++){
+            aRspan[i].index=i;
+            if(isRun){
+                aRspan[i].onclick=function(){
+                        changeImg(this.index)
+                }
+            }
+        }
+        //左右方向点击
+       aLspan[0].onclick=function(){
+           if(isRun){
+               changeImg(nowIndex-1);
+           }
+
+       }
+       aLspan[1].onclick=function(){
+           if(isRun){
+               changeImg(nowIndex+1);
+           }
+       }
+       //停止移入
+       oWrap.onmouseover=function(){
+           isTimer=false;
+       }
+       oWrap.onmouseout=function(){
+           isTimer=true;
+       }
+      //连续轮播
+       setInterval(function(){
+          if(isRun && isTimer){
+              changeImg(nowIndex+1)
+          }
+       },2000)
+       //按钮状态
+      function changeImg(index){
+          isRun=false;
+          //判断方向
+          var direction=1;
+          if(index>nowIndex){
+              direction=1;
+              nowIndex=index;
+          }
+          else if(index<nowIndex){
+              direction=-1;
+              nowIndex=index;
+          }
+          else if(index==nowIndex){
+              direction=0;
+          }
+          if(index==-1){
+              nowIndex=index=4
+              oImg.style.left = -5*490 + "px";
+          }
+        timer=setInterval(function(){
+            oImg.style.left=oImg.offsetLeft-(10*direction)+'px';
+            if(oImg.offsetLeft==-index*490){
+                clearInterval(timer);
+                isRun=true;
+                if(index==5){
+                    index=nowIndex=0;
+                    oImg.style.left=0;
+                }
+            }
+         $(".wc-rbtn span").eq(index).addClass("active").siblings().removeClass("active");
+        },16)
+      }
+   </script>
+</body>
+</html>

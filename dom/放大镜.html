@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .left{
+            display:inline-block;
+            position:relative;
+            width: 400px;
+            height: 400px;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            position:absolute;
+            left:0;
+            top:0;
+            opacity: 0.3;
+            z-index:1;
+        }
+        .l-img{
+            width: 400px;
+            height: 400px;
+        }
+        .right{
+            width: 400px;
+            height: 400px;
+            float:right;
+            margin-right:650px;
+            overflow: hidden;
+            position:relative;
+        }
+        .r-img{
+            position:absolute;
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <div class="left">
+        <img src="img/che.png" alt="" class="l-img">
+        <div id="box"></div>
+    </div>
+    <div class="right">
+        <img src="img/che.png" alt="" class="r-img">
+    </div>
+</div>
+
+<script>
+    var oBox=document.getElementById("box");
+    var oLeft=document.querySelector(".left");
+    var oRimg=document.querySelector(".r-img");
+   oLeft.onmousemove=function(e){
+       newX=e.clientX-100;
+       newY=e.clientY-100;
+       if(newX<=0){
+           newX=0
+       }
+       if(newX>=200){
+           newX=200
+       }
+       if(newY<=0){
+           newY=0
+       }
+       if(newY>=200){
+           newY=200
+       }
+       oBox.style.left=newX+"px";
+       oBox.style.top=newY+"px";
+       oRimg.style.left=-(newX*2)+"px";
+       oRimg.style.top=-(newY*2)+"px";
+
+
+
+
+   }
+
+</script>
+</body>
+</html>

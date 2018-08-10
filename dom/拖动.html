@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .content:after{
+           content:"";
+            display:block;
+            clear:both;
+        }
+        .left{
+            display:inline-block;
+            position:relative;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            position:absolute;
+            left:0;
+            top:0;
+            opacity: 0.3;
+            z-index:1;
+        }
+        img{
+            width: 400px;
+            height: 400px;
+        }
+
+        .right{
+            width: 400px;
+            float:right;
+
+        }
+    </style>
+
+</head>
+<body>
+<div class="content">
+    <div class="left">
+        <img src="img/che.png" alt="">
+        <div id="box"></div>
+    </div>
+    <div class="right">
+
+    </div>
+</div>
+
+   <script>
+      var oBox=document.getElementById("box");
+        oBox.onmousedown=function(e){
+           newX=e.clientX-this.offsetLeft;
+           newY=e.clientY-this.offsetTop;
+            document.onmousemove=function(e){
+                oBox.style.top=e.clientY-newY+"px";
+                oBox.style.left=e.clientX-newX+"px";
+
+            }
+        }
+       oBox.onmouseup=function(){
+           document.onmousemove = null;
+       }
+
+   </script>
+</body>
+</html>

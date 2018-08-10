@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .wrapper{
+            margin:0 auto;
+            width: 450px;
+            border:1px solid black;
+        }
+        .top-nav::after{
+             content: "";
+             clear:both;
+            display:block;
+        }
+        .top-nav .tn-ul{
+            height: 40px;
+            background-color: black;
+            padding:0;
+            margin:0;
+            border-bottom:1px solid black;
+        }
+        .top-nav li{
+           float:left;
+            list-style:none;
+            height: 40px;
+            line-height:40px ;
+            color:white;
+            padding:0 20px;
+        }
+        .tn-ul .active{
+            color:black;
+            background-color: #999999;
+        }
+
+    </style>
+</head>
+
+<body>
+   <div class="wrapper">
+       <div class="top-nav">
+           <ul class="tn-ul">
+               <li class="active">第一课</li>
+               <li>第二课</li>
+               <li>第三课</li>
+           </ul>
+       </div>
+       <div class="bottom-content">
+           <ul>
+               <li>第一页</li>
+               <li>网页特效原理分析</li>
+               <li>网页特效原理分析</li>
+               <li>网页特效原理分析</li>
+               <li>网页特效原理分析</li>
+           </ul>
+           <ul>
+               <li>第二页</li>
+               <li>改变网页背景颜色</li>
+           </ul>
+           <ul>
+               <li>第三页</li>
+               <li>javascript组成：ECMAScript、DOM、BOM</li>
+               <li>Javascript兼容性来源</li>
+           </ul>
+       </div>
+   </div>
+   <script>
+       var oTli=document.querySelectorAll(".tn-ul li");
+       var oBul=document.querySelectorAll(".bottom-content ul");
+       var index=0;
+       for(var i=0;i<oTli.length;i++){
+           oTli[i].index=i;
+           oTli[i].onmouseover=function(){
+               for(var j=0;j<oTli.length;j++){
+                   oTli[j].className="";
+                   oBul[j].style.display="none";
+               }
+               this.className="active";
+               oBul[this.index].style.display="block";
+           }
+
+       }
+
+   </script>
+</body>
+</html>

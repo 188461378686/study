@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        div{
+            height: 150px;
+            width: 150px;
+            background-color: darkgray;
+            margin:0 auto;
+            position:relative;
+            overflow: hidden;
+        }
+        p{
+            margin-top:20px;
+            text-align: center;
+
+        }
+        button{
+            width: 50px;
+            position:absolute;
+            left:50px;
+            bottom:10px;
+        }
+    </style>
+</head>
+<body>
+  <div>
+      <p>100</p>
+      <button>开始</button>
+  </div>
+  <script>
+      var oP=document.querySelector("p");
+      var oBtn=document.querySelector("button");
+      var timer;
+      oBtn.onclick=function(){
+      if(oBtn.innerHTML=="暂停"){
+             clearInterval(timer);
+             oBtn.innerHTML="开始";
+          }
+          else{
+          timer=setInterval(function(){
+              oP.innerText-=1;
+          },1000);
+          oBtn.innerHTML="暂停";
+      }
+      }
+
+
+  </script>
+</body>
+</html>
