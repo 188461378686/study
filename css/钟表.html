@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin:0;
+        }
+        .wrap{
+            width: 250px;
+            height: 250px;
+            border:2px dashed black;
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-left:-125px;
+            margin-top:-125px;
+
+        }
+        .circle {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+            border-radius: 50%;
+            box-sizing: border-box;
+            position:relative;
+        }
+        ul li{
+            list-style-type: none;
+            width: 4px;
+            height: 5px;
+            background-color: black;
+            position:absolute;
+            top:0;
+            left:50%;
+            transform-origin: 0 125px;
+        }
+        li:nth-child(5n+1){
+            width: 4px;
+            height: 10px;
+        }
+        .hour{
+            width: 10px;
+            height: 50px;
+            background-color: gray;
+            position: absolute;
+            bottom:125px;
+            left:120px;
+            transform-origin:center bottom;
+        }
+        .minute{
+            width: 8px;
+            height: 70px;
+            background-color: blue;
+            position: absolute;
+            bottom:125px;
+            left:121px;
+            transform-origin:center bottom;
+        }
+        .second{
+            width: 6px;
+            height: 95px;
+            background-color: red;
+            position: absolute;
+            bottom:125px;
+            left:122px;
+            transform-origin:center bottom;
+        }
+    </style>
+</head>
+<body>
+  <div class="wrap">
+      <div class="hour"></div>
+      <div class="minute"></div>
+      <div class="second"></div>
+          <ul class="circle">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+          </ul>
+      </div>
+  <script>
+      var oLi=document.querySelectorAll("li");
+      var oHour=document.querySelector(".hour");
+      var oMinute=document.querySelector(".minute");
+      var oSecond=document.querySelector(".second");
+
+      var x=0;
+      for(var i=0;i<oLi.length;i++){
+          oLi[i].style.transform='rotate('+x+'deg)';
+          x+=6;
+      }
+      run();
+      function run(){
+              var oDate=new Date();
+              var second=oDate.getSeconds();
+              var minute=oDate.getMinutes()+second/60;
+              var hour=oDate.getHours()+minute/60;
+              oHour.style.transform='rotate('+hour*30+'deg)';
+              oMinute.style.transform='rotate('+minute*6+'deg)';
+              oSecond.style.transform='rotate('+second*6+'deg)';
+      }
+     setInterval(function(){
+         run();
+     },1000)
+
+  </script>
+</body>
+</html>

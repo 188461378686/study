@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border:1px dashed black;
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin-left:-150px ;
+            margin-top:-150px ;
+            perspective-origin: 100px 800px;
+        }
+        .content1{
+            height: 300px;
+            width: 300px;
+            position:absolute;
+            top:0;
+            left:0;
+            background-color: #6c6c6c;
+            transition: transform 1s ease;
+            transform-style: preserve-3d;
+        }
+        .content2{
+            height: 300px;
+            width: 300px;
+            position:absolute;
+            top:0;
+            left:0;
+            background-color: #856d52;
+            transition: transform 1s ease;
+            transform: translateZ(-1px) rotateY(180deg);
+        }
+        .content1:hover{
+            transform: rotateY(180deg);
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="content1">
+        第一页
+        <div class="content2">
+           第二页
+        </div>
+    </div>
+</div>
+</body>
+</html>
