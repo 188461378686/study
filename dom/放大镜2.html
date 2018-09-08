@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .left{
+            width: 400px;
+            height: 600px;
+            position: relative;
+            display:inline-block;
+            float:left;
+        }
+        .left img{
+            width: 400px;
+            height: 600px;
+        }
+        .float-box{
+            width: 200px;
+            height: 200px;
+            background: rgba(0,0,0,0.3);
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .right{
+            margin-top:90px;
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            margin-left:30px  ;
+            float:left;
+            display:inline-block;
+            position: relative;
+        }
+        .right img{
+            position: absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="left">
+        <div class="float-box"></div>
+        <img src="./img/cixiu.jpg" alt="">
+    </div>
+    <div class="right">
+        <img src="./img/cixiu.jpg" alt="">
+    </div>
+</div>
+<script>
+    var oFloat=document.querySelector(".float-box");
+    var oBigimg=document.querySelector(".right img");
+    oFloat.onmousedown=function(e){
+        var floatwidth=e.clientX-oFloat.offsetLeft;
+        var floatheight=e.clientY-oFloat.offsetTop;
+        oFloat.onmousemove=function(e){
+            var ex=e.clientX;
+            var ey=e.clientY;
+            newX=ex-floatwidth;
+            newY=ey-floatheight;
+            if(newX<=0){
+                newX=0;
+            }
+            if(newX>=200){
+                newX=200;
+            }
+            if(newY<=0){
+                newY=0;
+            }
+            if(newY>=400){
+                newY=400;
+            }
+            this.style.left=newX+'px';
+            this.style.top=newY+'px';
+            oBigimg.style.left=-(newX*2)+'px';
+            oBigimg.style.top=-(newY*2)+'px';
+
+        }
+    };
+    oFloat.onmouseup=function(){
+        oFloat.onmousemove=null;
+    }
+</script>
+</body>
+</html>

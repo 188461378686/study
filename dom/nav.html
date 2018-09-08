@@ -33,7 +33,12 @@
             color:black;
             background-color: #999999;
         }
-
+        .bottom-content ul:nth-child(2){
+            display:none;
+        }
+        .bottom-content ul:nth-child(3){
+            display:none;
+        }
     </style>
 </head>
 
@@ -70,7 +75,7 @@
        var oBul=document.querySelectorAll(".bottom-content ul");
        var index=0;
        for(var i=0;i<oTli.length;i++){
-           oTli[i].index=i;
+           oTli[i].index=i;   //事件处理函数没有立即执行，调用时才执行
            oTli[i].onmouseover=function(){
                for(var j=0;j<oTli.length;j++){
                    oTli[j].className="";
