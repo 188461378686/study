@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        div{
+            width: 30%;
+            height: 0;
+            padding-bottom:30%;
+        }
+        .big{
+            background-color: red;
+        }
+        .middle{
+            background-color: blue;
+        }
+        .small{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="big">
+    <div class="middle">
+        <div class="small">
+        </div>
+    </div>
+</div>
+<script>
+    var oBig=document.querySelector(".big");
+    var oMiddle=document.querySelector(".middle");
+    var oSmall=document.querySelector(".small");
+    oBig.attachEvent("click",function(){
+        console.log("oBig");
+        window.event.cancelBubble=true; //移除绑定
+    })
+    function test(){
+        console.log("oBox1");
+    }
+    oBig.addEventListener("onclick",test,false)//函数后面不加括号
+    oBig.removeEventListener("onclick",test,false);//移除绑定，具名函数
+
+
+</script>
+</body>
+</html>

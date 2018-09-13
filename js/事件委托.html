@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <ul>
+       <li class="li1">1</li>
+       <li class="li2">2</li>
+       <li class="li3">3</li>
+       <li class="li4">4</li>
+       <li class="li5">5</li>
+       <li class="li6">6</li>
+   </ul>
+   <button class="btnadd">添加</button>
+   <button class="btndel">删除</button>
+   <script>
+       var oLi=document.querySelectorAll("li");
+       var oUl=document.querySelector("ul");
+       var oBtnadd=document.querySelector(".btnadd");
+       var oBtndel=document.querySelector(".btndel");
+       oBtnadd.onclick=function(){
+           var newElement=document.createElement("li");
+           newElement.innerText="7";
+           oUl.appendChild(newElement);
+       }
+       oBtndel.onclick=function(){
+           console.log(oUl.childNodes);
+//           oUl.removeChild(oUl.childNodes[6]);
+       }
+       oUl.onclick=function(e){
+           console.log(e.target);
+       }
+//       for(var i=0;i<oLi.length;i++){
+//           oLi[i].onclick=function(){
+//               console.log(this.innerText);
+//           }
+//       }
+   </script>
+</body>
+</html>

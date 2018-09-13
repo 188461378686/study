@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name,age,job) {
+        this.name=name;
+        this.age=age;
+        this.job=job;
+        this.sayName=sayName
+    }
+
+    function sayName(){
+        alert(this.name);
+    }
+    var person1=new Person('zhangsan',23,'jiaoshi');
+    var person2=new Person('lisi',25,'gongren');
+    person1.sayName();
+    person2.sayName();
+</script>
+</body>
+</html>

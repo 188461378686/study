@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            margin-bottom:20px;
+        }
+        input{
+            margin-right:20px;
+        }
+        table{
+            text-align:center;
+        }
+        table th,td{
+            padding:5px 5px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" class="info" placeholder="内容">
+    <input type="date" class="time">
+    <button class="addbtn">添加</button>
+</div>
+<table border="1" cellspacing="0" >
+    <tr>
+        <th>序号</th>
+        <th>内容</th>
+        <th>时间</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>上课</td>
+        <td>2017-03-16</td>
+        <td><button class="delbtn">删除</button></td>
+    </tr>
+</table>
+<script>
+    var addBtn=document.querySelector(".addbtn");
+    var delBtn=document.querySelector(".delbtn");
+    var tb=document.querySelector("table");
+    var index=1;
+
+    addBtn.onclick=function(){
+        var inFo=document.querySelector(".info").value;
+        var time=document.querySelector(".time").value;
+        var newEle=document.createElement("tr");
+        newEle.innerHTML='<td>'+(++index)+'</td>'+
+            '<td>'+ inFo+'</td>' +
+            '<td>'+time+'</td>'+
+            '<td><button class="delbtn">删除</button></td>';
+        tb.appendChild(newEle);
+    }
+    tb.onclick=function(e){
+        var nextEle=e.target.parentElement.parentElement.nextElementSibling;
+        while(nextEle)
+        {
+            nextEle.firstElementChild.innerText-=1;
+            nextEle=nextEle.nextElementSibling;
+        }
+        e.target.parentElement.parentElement.remove();
+    }
+</script>
+</body>
+</html>

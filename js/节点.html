@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div class="box1">
+      <div class="box2"></div>
+      <!--123-->
+      <div class="box3"></div>
+      <span class="span1"></span>
+  </div>
+  <script>
+      var oBox1=document.querySelector(".box1");
+      var oBox2=document.querySelector(".box2");
+      var oBox3=document.querySelector(".box3");
+      //用nextsbibling去实现nextElementSbling
+      function find(node){
+          var nextNode=node.nextSibling;
+          while(nextNode&&nextNode.nodeType!=1)
+          {
+             nextNode=nextNode.nextSibling;
+          }
+          return nextNode;
+      }
+      console.log(find(oBox2));
+
+      //     console.log(oBox1.childNodes);//子节点
+//     for(var i=0;i<oBox1.childNodes.length;i++){
+//         if(oBox1.childNodes.item(i).nodeType==1)
+//         console.log(oBox1.childNodes.item(i));
+//     }
+//      console.log(oBox2.nextElementSibling);//元素
+//      console.log(oBox2.nextSibling);//节点
+//      console.log(oBox3.previousElementSibling);//元素
+//      console.log(oBox3.previousSibling);//节点
+//      console.log(oBox3.parentNode);
+//      console.log(oBox3.parentElement);
+//      console.log(oBox1.lastChild);//节点
+//      console.log(oBox1.lastElementChild);//元素
+
+
+//     function next(obj){
+//         var nextNode =obj;
+//         do{
+//             nextNode=nextNode.nextSibling;
+//         }
+//         while(nextNode&&nextNode.nodeType!=1);
+//          return nextNode;
+//     }
+//     console.log(next(oBox2));
+  </script>
+</body>
+</html>
